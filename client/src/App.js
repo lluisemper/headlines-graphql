@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import HeadLineList from './Components/HeadLineList/HeadLineList.js';
-import ApolloClient from 'apollo-boost';
-import { gql } from "apollo-boost";
 import SearchBar from './Components/SearchBar/SearchBar';
-import breakingNews from './pictures/breaking.png'
-import apiService from './apiService'
+import breakingNews from './pictures/breaking.png';
+import apiService from './apiService';
 
 function bySearchQuery(query) {
   const regex = new RegExp(query)
