@@ -26,7 +26,7 @@ const newspapers = [
   {
     newspaper: 'el-pais',
     url: 'https://elpais.com/',
-    path: 'article.articulo--primero h2.articulo-titulo a',
+    path: 'h2.headline h2.font_secondary width_full  a',
     country: 'es-ES'
   },
   {
