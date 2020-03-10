@@ -2,13 +2,13 @@ const newspapers = [
   {
     newspaper: '20-minutos',
     url: 'https://www.20minutos.es/',
-    path: 'section.board-b a[id="m54-53-55"]',
+    path: 'h1 a[id="m242-241-243"]',
     country: 'es-ES'
   },
   {
     newspaper: 'el-confidencial',
     url: 'https://www.elconfidencial.com/',
-    path: 'section.opening-1-top h3.fs-60 a',
+    path: 'h2 a',
     country: 'es-ES'
   },
   {
@@ -26,7 +26,7 @@ const newspapers = [
   {
     newspaper: 'el-pais',
     url: 'https://elpais.com/',
-    path: 'h2.headline h2.font_secondary width_full  a',
+    path: 'h2.headline a',
     country: 'es-ES'
   },
   {
@@ -38,7 +38,7 @@ const newspapers = [
   {
     newspaper: 'expansion',
     url: 'https://www.expansion.com/',
-    path: 'h2.flex-article__heading a.flex-article__heading-link',
+    path: 'li.ue-c-cover-content__related-link a',
     country: 'es-ES'
   },
   {
