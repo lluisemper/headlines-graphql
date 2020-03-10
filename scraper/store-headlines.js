@@ -30,30 +30,37 @@ function getHeadlines (data) {
 };
 
 function storeInDB (dataArr) {
-  promiseAll(dataArr).then(arr => {
-    const promises = []
-    for (let j = 0; j < arr.length; j++) {
-      if (arr[j]) {
-        const doc = new HeadlineSchema({ ...dataArr[j] });
-        const prom = new Promise((res, rej) => {
-          doc.save(function (err, item) {
-            if (err) rej(err);
-            res(item)
+  return new Promise((resolve => {
+    promiseAll(dataArr).then(arr => {
+      const promises = []
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j]) {
+          const doc = new HeadlineSchema({ ...dataArr[j] });
+          const prom = new Promise((res, rej) => {
+            doc.save(function (err, item) {
+              console.log('SAVED');
+
+              if (err) rej(err);
+              res(item)
+            });
           });
-        });
-        promises.push(prom)
-        // promises.push(doc.save())
-      } else console.log('Duplicate found')
-    }
-    return Promise.all(promises)
-  }).then(items => {
-    console.log('==================>>>>>>>>>>  ITEMS INSERTED : ', items.length, '   <<<<<<<<<<==================')
-    mongoose.connection.close();
-  }).catch(err => console.log(err));
+          promises.push(prom)
+          // promises.push(doc.save())
+        } else console.log('Duplicate found')
+      }
+      resolve(Promise.all(promises))
+    }).then(items => {
+      console.log('==================>>>>>>>>>>  ITEMS INSERTED : ', items.length, '   <<<<<<<<<<==================')
+      mongoose.connection.close();
+    }).catch(err => console.log(err));
+  }))
+
 };
 
 function promiseAll (arr) {
   const promises = [];
+  console.log(arr, '------');
+
   for (let i = 0; i < arr.length; i++) {
     promises.push(hashExists(arr[i].hash));
   }
@@ -69,3 +76,5 @@ async function hashExists (thisHash) {
 
 
 getHeadlines(newspapers).then(data => storeInDB(data));
+
+module.exports = { storeInDB }

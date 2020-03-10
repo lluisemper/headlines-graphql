@@ -1,64 +1,62 @@
 const { getHeadline, fetchHeadlines } = require('../scraper/fetch-headlines')
 const { newspapers } = require('../scraper/newspapers');
-const { storeHeadlines } = require('../scraper/store-headlines');
+const { storeInDB } = require('../scraper/store-headlines');
 const mockData = require('./mockData');
 const HeadlineSchema = require('../server/models/headlines');
 
-
 //for this test to work first serve ./newspaperStatic.html
-describe("Test getHeadline", function () {
-  const laVanGuardia = newspapers.find(obj => obj.newspaper === 'la-vanguardia');
-  it("getHeadline should return the correct", async function () {
-    const result = await getHeadline('http://192.168.1.172:5000/newspaperStatic', laVanGuardia.path);
-    expect(result).toEqual(`El contagio por coronavirus en centros
-                        de mayores provoca cierres`);
-  });
-});
+// describe("Test getHeadline", function () {
+//   const laVanGuardia = newspapers.find(obj => obj.newspaper === 'la-vanguardia');
+//   it("getHeadline should return the correct", async function () {
+//     const result = await getHeadline('http://192.168.1.172:5000/newspaperStatic', laVanGuardia.path);
+//     expect(result).toEqual(`El contagio por coronavirus en centros
+//                         de mayores provoca cierres`);
+//   });
+// });
 
-describe("Test if all headlines return a headline", function () {
-  var originalTimeout;
+// describe("Test if all headlines return a headline", function () {
+//   var originalTimeout;
 
-  beforeEach(function () {
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000;
-  });
+//   beforeEach(function () {
+//     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+//     jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000000;
+//   });
 
-  afterEach(function () {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-  });
+//   afterEach(function () {
+//     jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+//   });
 
-  it("all headline should contain a non-empty string", async function () {
-    const result = await fetchHeadlines();
-    let empty = null;
-    for (headline in result.headlines) {
-      if (result.headlines[headline].headline === '' || undefined) {
-        empty = headline;
-      }
-    }
-    expect(empty).toBe(null);
-  });
-});
+//   it("all headline should contain a non-empty string", async function () {
+//     const result = await fetchHeadlines();
+//     let empty = null;
+//     for (headline in result.headlines) {
+//       if (result.headlines[headline].headline === '' || undefined) {
+//         empty = headline;
+//       }
+//     }
+//     expect(empty).toBe(null);
+//   });
+// });
 
-describe("Test for storeHeadLines", function () {
+describe("Test for store-headLines", function () {
   let inDatabase = false;
-  storeHeadlines(mockData);
-  console.log(HeadlineSchema.find({ headline: 'test' }));
+  beforeEach((done) => {
+    storeInDB(mockData.mockData).then((res) => {
+      HeadlineSchema.find({ headline: 'test' }, (err, headline) => {
+        if (headline[0].headline === 'test') {
+          inDatabase = true;
+          done();
+        }
+      });
+    })
+  });
 
-  it("headline should be stored in the database", async function () {
+  it("headline should be stored in the database", function () {
     expect(inDatabase).toBe(true);
   });
+
+  afterEach(() => {
+    HeadlineSchema.find({ headline: 'test' }).deleteOne().exec();
+  })
 });
-
-
-
-// test if headline is stored in database
-
-// test if headlines are rendered when called
-
-// test search function on client side
-
-// test country filter
-
-
-
 
