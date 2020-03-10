@@ -1,5 +1,6 @@
 const HeadlineSchema = require("../server/models/headlines");
 const fetchHeadLines = require("./fetch-headlines").fetchHeadlines;
+require('dotenv').config()
 const { newspapers } = require('./newspapers.js');
 const mongoose = require("../server/db");
 const _ = require("underscore");
