@@ -1,19 +1,18 @@
 const { getHeadline, fetchHeadlines } = require('../scraper/fetch-headlines')
 const { newspapers } = require('../scraper/newspapers');
-const { storeHeadlines } = require('../scraper/store-headlines');
+const { storeInDB } = require('../scraper/store-headlines');
 const mockData = require('./mockData');
 const HeadlineSchema = require('../server/models/headlines');
 
-
-//for this test to work first serve ./newspaperStatic.html
-describe("Test getHeadline", function () {
-  const laVanGuardia = newspapers.find(obj => obj.newspaper === 'la-vanguardia');
-  it("getHeadline should return the correct", async function () {
-    const result = await getHeadline('http://192.168.1.172:5000/newspaperStatic', laVanGuardia.path);
-    expect(result).toEqual(`El contagio por coronavirus en centros
-                        de mayores provoca cierres`);
-  });
-});
+// //for this test to work first serve ./newspaperStatic.html (npx serve Tests) 
+// describe("Test getHeadline", function () {
+//   const laVanGuardia = newspapers.find(obj => obj.newspaper === 'la-vanguardia');
+//   it("getHeadline should return the correct", async function () {
+//     const result = await getHeadline('http://192.168.1.172:5000/newspaperStatic', laVanGuardia.path);
+//     expect(result).toEqual(`El contagio por coronavirus en centros
+//                         de mayores provoca cierres`);
+//   });
+// });
 
 describe("Test if all headlines return a headline", function () {
   var originalTimeout;
@@ -28,10 +27,11 @@ describe("Test if all headlines return a headline", function () {
   });
 
   it("all headline should contain a non-empty string", async function () {
-    const result = await fetchHeadlines();
+    const result = await fetchHeadlines(newspapers);
     let empty = null;
     for (headline in result.headlines) {
       if (result.headlines[headline].headline === '' || undefined) {
+        console.log(headline)
         empty = headline;
       }
     }
@@ -39,26 +39,25 @@ describe("Test if all headlines return a headline", function () {
   });
 });
 
-describe("Test for storeHeadLines", function () {
-  let inDatabase = false;
-  storeHeadlines(mockData);
-  console.log(HeadlineSchema.find({ headline: 'test' }));
+// describe("Test for store-headLines", function () {
+//   let inDatabase = false;
+//   beforeEach((done) => {
+//     storeInDB(mockData.mockData).then((res) => {
+//       HeadlineSchema.find({ headline: 'test' }, (err, headline) => {
+//         if (headline[0].headline === 'test') {
+//           inDatabase = true;
+//           done();
+//         }
+//       });
+//     })
+//   });
 
-  it("headline should be stored in the database", async function () {
-    expect(inDatabase).toBe(true);
-  });
-});
+//   it("headline should be stored in the database", function () {
+//     expect(inDatabase).toBe(true);
+//   });
 
-
-
-// test if headline is stored in database
-
-// test if headlines are rendered when called
-
-// test search function on client side
-
-// test country filter
-
-
-
+//   afterEach(() => {
+//     HeadlineSchema.find({ headline: 'test' }).deleteOne().exec();
+//   })
+// });
 
