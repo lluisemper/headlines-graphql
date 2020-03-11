@@ -4,19 +4,26 @@ const { ApolloServer, gql } = require('apollo-server-express');
 const express = require('express');
 const app = express();
 const passport = require('./configAuth');
+const cookieParser = require('cookie-parser')
 const cors = require('cors');
 
 
 require("./db");
-
+app.use(cors({origin:"http://localhost:3000",credentials:true}))
+app.use(cookieParser())
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 require("./middlewares")(app, passport)
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  // context: ({ req }) => {
+  //   console.log('req', req.headers);
+    
+  //   return ;
+  // },
   playground: true,
   cors: true,
   debug: true,

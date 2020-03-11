@@ -5,11 +5,13 @@ const mongoose = require('mongoose');
 const userSchema = require('./models/user');
 
 
-passport.serializeUser(function (user, cb) {
+passport.serializeUser(function (user, cb) {  
   cb(null, user);
 });
 
 passport.deserializeUser(function (obj, cb) {
+  console.log("deserialize");
+
   cb(null, obj);
 });
 
@@ -21,7 +23,7 @@ passport.use(new GoogleStrategy({
 },
 
 
-  function (accessToken, refreshToken, profile, cb) {
+  function (accessToken, refreshToken, profile, cb) {    
     userSchema.findOne({id: profile.id}, function (err, user) {
       if (err) {
         return cb(err);

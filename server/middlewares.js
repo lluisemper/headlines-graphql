@@ -7,8 +7,10 @@ module.exports = function (app, passport) {
   app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function (req, res) {
+      res.cookie('cookie', req.user._id);
+      // console.log('reees',res);
+      
       // Successful authentication, redirect home.
-      console.log('auth/google/callback', req.user)
       res.redirect('http://localhost:3000');
     });
 
