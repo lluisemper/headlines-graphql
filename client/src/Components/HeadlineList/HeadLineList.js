@@ -9,24 +9,24 @@ function HeadLineList ({ headlines }) {
     <div className="HeadLineList">
       <div className='flag' id="flagSpain"></div>
       <div className="wrapper wrapper-spain">
-        {headlines.map(headline => {
-          if (headline.locale === 'es-ES')
-            return <HeadLineItem key={headline.url} headline={headline} />
-        })}
+        {headlines
+          .filter(headline => headline.locale === 'es-ES')
+          .map(headline => <HeadLineItem key={headline.url} headline={headline} />
+        )}
       </div>
       <div className='flag' id="flagUK"></div>
       <div className="wrapper">
-        {headlines.map(headline => {
-          if (headline.locale === 'en-GB')
-          return <HeadLineItem key={headline.url} headline={headline} />
-        })}
+        {headlines
+          .filter(headline => headline.locale === 'en-GB')
+          .map(headline => <HeadLineItem key={headline.url} headline={headline} />
+          )}
       </div>
-        <div className='flag' id="flagNL"></div>
+      <div className='flag' id="flagNL"></div>
       <div className="wrapper">
-        {headlines.map(headline => {
-          if (headline.locale === 'nl-NL')
-            return <HeadLineItem key={headline.url} headline={headline} />
-        })}
+        {headlines
+          .filter(headline => headline.locale === 'nl-NL')
+          .map(headline => <HeadLineItem key={headline.url} headline={headline} />
+          )}
       </div>
     </div>
   );
