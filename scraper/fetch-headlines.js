@@ -20,7 +20,6 @@ async function getHeadline (url, path) {
     //DATA-START
     const headline = $(path).first().text();
     // DATA-END
-    console.log('headline',headline)
     return headline;
   } catch (error) {
     console.log('error', error);
@@ -36,6 +35,6 @@ async function fetchHeadlines (data) {
   return headlines;
 }
 
-module.exports = {fetchHeadlines, getHeadline};
+module.exports = { fetchHeadlines, getHeadline };
 
 
