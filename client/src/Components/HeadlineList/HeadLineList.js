@@ -18,6 +18,13 @@ function HeadLineList ({ headlines }) {
       <div className="wrapper">
         {headlines.map(headline => {
           if (headline.locale === 'en-GB')
+          return <HeadLineItem key={headline.url} headline={headline} />
+        })}
+      </div>
+        <div className='flag' id="flagNL"></div>
+      <div className="wrapper">
+        {headlines.map(headline => {
+          if (headline.locale === 'nl-NL')
             return <HeadLineItem key={headline.url} headline={headline} />
         })}
       </div>

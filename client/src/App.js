@@ -27,7 +27,9 @@ function App() {
 
   return (
     <div className="App">
+      <div className="login">
       <a href="http://localhost:4000/auth/google" >login</a>
+      </div>
       <img src={breakingNews} className="breakingNews"></img>
       <SearchBar onSearchQueryUpdate={setSearchQuery}></SearchBar>
       {headlinesToShow && <HeadLineList headlines={headlinesToShow} />}

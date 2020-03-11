@@ -48,12 +48,6 @@ const newspapers = [
     country: 'es-ES'
   },
   {
-    newspaper: 'daily-mail',
-    url: 'https://www.dailymail.co.uk/home/index.html',
-    path: 'h2.linkro-darkred a',
-    country: 'en-GB'
-  },
-  {
     newspaper: 'the-guardian',
     url: 'https://www.theguardian.com/international',
     path: '.fc-item__container a.js-headline-text',
@@ -76,6 +70,30 @@ const newspapers = [
     url: 'https://www.bbc.com/',
     path: 'li.media-list__item--1 a.media__link',
     country: 'en-GB'
+  },
+  {
+    newspaper: 'nu',
+    url: 'https://www.nu.nl/',
+    path: 'h1.title.fluid',
+    country: 'nl-NL'
+  },
+  {
+    newspaper: 'nos',
+    url: 'https://www.nos.nl/',
+    path: 'h2.title_h8Vn8Zh4',
+    country: 'nl-NL'
+  },
+  {
+    newspaper: 'nrc',
+    url: 'https://www.nrc.nl/',
+    path: 'h3.nmt-item__headline',
+    country: 'nl-NL'
+  },
+  {
+    newspaper: 'telegraaf',
+    url: 'https://www.telegraaf.nl/',
+    path: 'h2.TeaserHeadline__text.TopStoryTeaser__teaserHeadline.TopStoryTeaser__teaserHeadline--big',
+    country: 'nl-NL'
   }
 ];
 
