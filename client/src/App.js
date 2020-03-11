@@ -20,20 +20,29 @@ function App() {
     : headlines
 
   useEffect(() => {
-    apiService.fetchdata().then(result => {
-      setHeadline(result.data.headline)
-    });
+    apiService.fetchdata()
+      .then(result => {
+        setHeadline(result.data.headline)
+      })
+      .catch((err) => console.error(err))
   }, []);
 
+  console.log('headlinesToShow', headlinesToShow);
   return (
-    <div className="App">
-      <div className="login">
-      <a href="http://localhost:4000/auth/google" >login</a>
-      </div>
-      <img src={breakingNews} className="breakingNews" alt=''></img>
-      <SearchBar onSearchQueryUpdate={setSearchQuery}></SearchBar>
-      {headlinesToShow && <HeadLineList headlines={headlinesToShow} />}
 
+    <div className="App">
+      {headlinesToShow !== undefined && headlinesToShow.length !== 0
+        ? <div className="App">
+          <img src={breakingNews} className="breakingNews" alt=''></img>
+          <SearchBar onSearchQueryUpdate={setSearchQuery}></SearchBar>
+          <HeadLineList headlines={headlinesToShow} />
+        </div>
+        :
+        <div className="login">
+          <div className="login-text">
+            <a href="http://localhost:4000/auth/google" >We would like to log in with Google to see our amazing headlines</a>
+          </div>
+        </div>}
     </div>
   );
 }

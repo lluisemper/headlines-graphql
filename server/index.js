@@ -1,6 +1,6 @@
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
-const { ApolloServer, gql } = require('apollo-server-express');
+const { ApolloServer, gql, AuthenticationError } = require('apollo-server-express');
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -11,6 +11,7 @@ const userSchema = require('./models/user');
 
 require("./db");
 
+app.use(cors({ origin: "http://localhost:3000", credentials: true }))
 app.use(cookieParser())
 app.use(passport.initialize());
 app.use(passport.session());
@@ -20,21 +21,15 @@ require("./middlewares")(app, passport)
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async ({ req }) => {
-    // try {
-    //   if (!req.cookies.cookie) res.status(401).send();
-    //   const user = await userSchema.findOne({ _id: req.cookies.cookie });
-    //   if (user) {
-    //     req.user = user;
-    //     next();
-    //   } else {
-    //     res.status(401).send();
-    //   }
-    // } catch (err) {
-    //   console.log('err', err)
-    //   res.status(500).send();
-    // }
-    return
+  context: async ({ req, res }) => {
+    if (req.cookies.cookie) {
+      const user = await userSchema.findOne({ _id: req.cookies.cookie });
+      console.log('user', user);
+      return user;
+    } else {
+      throw new AuthenticationError('you must be logged in');
+    }
+
   },
   playground: true,
   cors: true,

@@ -28,6 +28,8 @@ export default {
           url
         }
       }`
+      }, {
+        errorPolicy: "all"
       })
   }
 }
