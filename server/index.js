@@ -2,28 +2,40 @@ const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
 const { ApolloServer, gql } = require('apollo-server-express');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const passport = require('./configAuth');
 const cookieParser = require('cookie-parser')
-const cors = require('cors');
+const userSchema = require('./models/user');
 
 
 require("./db");
-app.use(cors({origin:"http://localhost:3000",credentials:true}))
+
 app.use(cookieParser())
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 require("./middlewares")(app, passport)
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  // context: ({ req }) => {
-  //   console.log('req', req.headers);
-    
-  //   return ;
-  // },
+  context: async ({ req }) => {
+    // try {
+    //   if (!req.cookies.cookie) res.status(401).send();
+    //   const user = await userSchema.findOne({ _id: req.cookies.cookie });
+    //   if (user) {
+    //     req.user = user;
+    //     next();
+    //   } else {
+    //     res.status(401).send();
+    //   }
+    // } catch (err) {
+    //   console.log('err', err)
+    //   res.status(500).send();
+    // }
+    return
+  },
   playground: true,
   cors: true,
   debug: true,
@@ -34,7 +46,7 @@ const server = new ApolloServer({
   }
 });
 
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, cors: { origin: "http://localhost:3000", credentials: true } });
 
 const PORT = process.env.PORT || 4000;
 

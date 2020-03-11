@@ -9,7 +9,7 @@ const client = new ApolloClient({
     {
       uri: "http://localhost:4000/graphql",
 
-      credentials: 'same-origin'
+      credentials: 'include'
     }),
     cache: new InMemoryCache()
 });
