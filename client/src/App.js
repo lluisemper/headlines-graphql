@@ -41,8 +41,7 @@ function App () {
         <div className="login">
           <div className="breakingSmall"></div>
           <div className="login-text">
-            <h1>foooooooooooooooo</h1>
-            <a href= {process.env.URL + "/auth/google/"}>login</a>
+            <a href= {"/auth/google/"}>login</a>
           </div>
         </div>}
     </div>

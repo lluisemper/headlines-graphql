@@ -7,7 +7,7 @@ import { HttpLink } from 'apollo-link-http';
 const client = new ApolloClient({
   link:new HttpLink(
     {
-      uri: process.env.URL + "/graphql",
+      uri: "/graphql",
 
       credentials: 'include'
     }),
