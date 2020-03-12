@@ -39,8 +39,9 @@ function App() {
         </div>
         :
         <div className="login">
+          <h3>Log in with Google to stay up to date with the latest news</h3>
           <div className="login-text">
-            <a href="http://localhost:4000/auth/google" >We would like to log in with Google to see our amazing headlines</a>
+            <a href="http://localhost:4000/auth/google" >Login</a>
           </div>
         </div>}
     </div>
