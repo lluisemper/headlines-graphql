@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === 'production') {
 
 server.applyMiddleware({ app, cors: { origin: "http://localhost:3000", credentials: true } });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 80;
 
 app.listen({ port: PORT }, () => {
   console.log(`🚀 Server ready at port: ${PORT}`);
