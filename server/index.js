@@ -41,7 +41,7 @@ const server = new ApolloServer({
     schemaTag: "beta"
   }
 });
-app.use('/', routes);
+
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
