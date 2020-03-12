@@ -11,7 +11,7 @@ module.exports = function (app, passport) {
       // console.log('reees',res);
       
       // Successful authentication, redirect home.
-      res.redirect('http://localhost:4000');
+      res.redirect(process.env.URL);
     });
 
 }
