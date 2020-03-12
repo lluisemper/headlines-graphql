@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5cec362d.chunk.css",
+    "main.js": "/static/js/main.e8bc5411.chunk.js",
+    "main.js.map": "/static/js/main.e8bc5411.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ef76e641.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ef76e641.js.map",
+    "static/js/2.9fcbd1f4.chunk.js": "/static/js/2.9fcbd1f4.chunk.js",
+    "static/js/2.9fcbd1f4.chunk.js.map": "/static/js/2.9fcbd1f4.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.85d8e5c0160b4fef88e1790c4d560602.js": "/precache-manifest.85d8e5c0160b4fef88e1790c4d560602.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.5cec362d.chunk.css.map": "/static/css/main.5cec362d.chunk.css.map",
+    "static/js/2.9fcbd1f4.chunk.js.LICENSE.txt": "/static/js/2.9fcbd1f4.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/breaking.74cc15d9.png",
+    "static/media/index.css": "/static/media/newspapers.31b8104f.png",
+    "static/media/style.css": "/static/media/pngwave.9f23b418.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ef76e641.js",
+    "static/js/2.9fcbd1f4.chunk.js",
+    "static/css/main.5cec362d.chunk.css",
+    "static/js/main.e8bc5411.chunk.js"
+  ]
+}
