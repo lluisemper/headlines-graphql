@@ -7,6 +7,7 @@ const app = express();
 const passport = require('./configAuth');
 const cookieParser = require('cookie-parser')
 const userSchema = require('./models/user');
+const path = require('path');
 
 
 require("./db");
@@ -40,6 +41,14 @@ const server = new ApolloServer({
     schemaTag: "beta"
   }
 });
+app.use('/', routes);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 server.applyMiddleware({ app, cors: { origin: "http://localhost:3000", credentials: true } });
 
