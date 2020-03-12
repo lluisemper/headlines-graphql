@@ -5,12 +5,12 @@ import SearchBar from './Components/SearchBar/SearchBar';
 import breakingNews from './pictures/breaking.png';
 import apiService from './apiService';
 
-function bySearchQuery(query) {
+function bySearchQuery (query) {
   const regex = new RegExp(query)
   return headline => regex.test(headline.headline)
 }
 
-function App() {
+function App () {
 
   const [headlines, setHeadline] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -39,9 +39,9 @@ function App() {
         </div>
         :
         <div className="login">
-          <h3>Log in with Google to stay up to date with the latest news</h3>
+          <div className="breakingSmall"></div>
           <div className="login-text">
-            <a href="http://localhost:4000/auth/google" >Login</a>
+            <a href="http://localhost:4000/auth/google" >login</a>
           </div>
         </div>}
     </div>
