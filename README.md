@@ -1,6 +1,26 @@
 # Headlines GraphQL
-Headlines GraphQL is a public API which serves main headlines of different newspapers. Data is scraped and stored every hour.
 
-https://headlines-graphql.herokuapp.com/
+* Headlines GraphQL is a public API which serves main headlines of different newspapers.
 
-![alt text](https://raw.githubusercontent.com/alandouglas96/headlines-graphql/master/assets/Playground.png)
+* The version after the refactor can be found in this url: https://breakingnewsheadlines.herokuapp.com/
+ 
+ ## Getting started and running it in your local machine
+ 
+ npm install & npm install in the client folder, npm start. Everytime that you do node run store-headlines.js it will scrap de headlines of Spanish, Brittish and Dutch newspapers.
+ 
+ 
+## Usage
+
+environment variables example in the repo
+
+## Tech stack
+
+ * React, apollo server integration with express, graphQl, passport, apollo client, mongoDB.
+ 
+ * Testing: Jest and Jasmine
+
+
+## Improvement on this project made by Me and another student
+
+ * We had 6 days to refactor the code, do testing, implement authentification and a client, and deploy the project
+
