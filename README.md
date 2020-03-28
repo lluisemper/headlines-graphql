@@ -3,6 +3,9 @@
 * Headlines GraphQL is a public API which serves main headlines of different newspapers.
 
 * The version after the refactor can be found in this url: https://breakingnewsheadlines.herokuapp.com/
+
+![123](https://user-images.githubusercontent.com/58423269/77821764-04e68e00-70ed-11ea-855c-8e1551bb9289.png)
+
  
  ### Getting started and running it in your local machine
  
