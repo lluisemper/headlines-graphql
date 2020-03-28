@@ -23,4 +23,10 @@ environment variables example in the repo
 ### Improvement on this project made by Me and another student
 
  * We had 6 days to refactor the code, do testing, implement authentification and a client, and deploy the project
+ 
+ ### Contributors
+ 
+ Lluis Semper Lloret
+ 
+ Micha van Eeden https://github.com/eeden01
 
