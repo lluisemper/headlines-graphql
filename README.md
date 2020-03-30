@@ -9,8 +9,13 @@
  
  ### Getting started and running it in your local machine
  
- npm install & npm install in the client folder, npm start. Everytime that you do node run store-headlines.js it will scrap the headlines of Spanish, Brittish and Dutch newspapers.
+ `npm i && cd client npm i`
  
+ `npm start`
+ 
+Everytime that you do node run store-headlines.js it will scrap the headlines of Spanish, Brittish and Dutch newspapers.
+ 
+ `node run store-headlines.js`
  
 ### Usage
 
